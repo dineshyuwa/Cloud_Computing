@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: register-app-blue
+  namespace: prod
+  labels:
+    app: register-app-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: register-app-blue
+  template:
+    metadata:
+      labels:
+        app: register-app-blue
+    spec:
+      containers:
+      - name: register-app-blue
+        image: 153728362522.dkr.ecr.us-east-1.amazonaws.com/register-app:0.2
+        imagePullPolicy: Always
+        ports:
+          - name: web
+            containerPort: 5000
+        envFrom:
+         - secretRef:
+             name: mongocred
+      imagePullSecrets:
+          - name: regcred

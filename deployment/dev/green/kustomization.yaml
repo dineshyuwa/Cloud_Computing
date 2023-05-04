@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- dev-register-app-green-deployment.yaml
+- dev-green-ing.yaml
+- dev-green-service.yaml
+namespace: dev
+images:
+- name: 520707619786.dkr.ecr.us-east-1.amazonaws.com/register-app

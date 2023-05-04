@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: "5000"
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:us-east-1:153728362522:certificate/39dc644c-b7b7-4853-b9fc-9fb7126b7ac5"
+    kubernetes.io/ingress.class: alb
+  labels:
+    app: register-app-blue
+  name: register-app-ingress-blue
+  namespace: prod
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: register-app-blue
+            port:
+              number: 5000
+        path: /*
+        pathType: ImplementationSpecific
