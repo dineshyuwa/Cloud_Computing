@@ -1,0 +1,17 @@
+{
+  "name": "getvoterstatus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muljayan",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.10.2",
+    "mongoose": "^6.8.1"
+  }
+}
